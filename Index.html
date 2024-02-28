@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parallax Website</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <center>
+    <img src="https://i.ibb.co/t86LptJ/1706451865-picsay-removebg-preview.png"height="145px">
+  </center>
+  <h1>Selamat datang</h1>
+</header>
+
+<section class="parallax">
+  <div class="parallax-content">
+    <h2>About Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et aliquam ipsum. Duis id erat vel nisi sollicitudin pulvinar. Integer a nisi ac quam viverra accumsan.</p>
+  </div>
+</section>
+
+<section>
+  <div class="content">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Service 1</li>
+      <li>Service 2</li>
+      <li>Service 3</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 Parallax Website. All rights reserved.</p>
+  <div id="clock"></div> <!-- Tempat untuk jam analog -->
+</footer>
+
+<script src="script.js"></script> <!-- Hubungkan file JavaScript -->
+</body>
+</html>
+<style>
+/* Reset default styles */
+* {
+  margin:0 ;
+  padding:0 ;
+  box-sizing: border-box;
+}
+
+/* Styling header */
+header {
+  height: 100vh;
+  background-image: url('https://i.ibb.co/nf1PKZr/sad.gif');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+header h1 {
+  font-size: 3em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efek bayangan teks */
+}
+
+/* Styling parallax section */
+.parallax {
+  height: 100vh;
+  background-image: url('parallax-background.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.parallax-content {
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px; /* Sudut melengkung pada kotak konten */
+}
+
+.parallax-content h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.parallax-content p {
+  font-size: 1.2em;
+}
+
+/* Styling content section */
+.content {
+  padding: 50px;
+  text-align: center;
+}
+
+.content h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.content ul {
+  list-style: none; /* Menghilangkan bullets pada list */
+}
+
+.content ul li {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* Styling footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 1.2em;
+}
+
+#clock {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: red;
+}
+
+</style>
+<script>
+// Fungsi untuk membuat jam analog
+function updateClock() {
+  let now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+
+  let hourHand = document.querySelector("#hour");
+  let minuteHand = document.querySelector("#minute");
+  let secondHand = document.querySelector("#second");
+
+  let hourAngle = (360 / 12) * hours + (360 / 12) * (minutes / 60);
+  let minuteAngle = (360 / 60) * minutes + (360 / 60) * (seconds / 60);
+  let secondAngle = (360 / 60) * seconds;
+
+  hourHand.style.transform = `rotate(${hourAngle}deg)`;
+  minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
+  secondHand.style.transform = `rotate(${secondAngle}deg)`;
+}
+
+// Panggil fungsi updateClock setiap detik
+setInterval(updateClock, 1000);
+
+// Memanggil fungsi updateClock saat halaman dimuat pertama kali
+updateClock();
+
+</script>
